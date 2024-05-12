@@ -10,6 +10,7 @@ class TodoRepository (
 
     fun getAllTodoItems():List<Todo> = db.getTodoDao().getAllTodoItems()
 
+    suspend fun getTodoItemById(id: Int): Todo = db.getTodoDao().getTodoItemById(id)
     suspend fun update(title:String, description:String, id:Int) = db.getTodoDao().update(title, description, id)
 
 }

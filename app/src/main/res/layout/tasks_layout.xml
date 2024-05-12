@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/todo_row_item_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="6dp"
     android:layout_marginVertical="8dp"
+    android:clickable="true"
     app:cardBackgroundColor="@color/blackLight"
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp">
@@ -33,10 +35,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:fontFamily="@font/nunito_bold"
                 android:text="Title"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:fontFamily="@font/nunito_bold"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvdescription"
@@ -44,10 +46,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvtitle"
                 android:layout_margin="5dp"
+                android:fontFamily="@font/nunito_semibold"
                 android:text="Description"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:fontFamily="@font/nunito_semibold"/>
+                android:textSize="16sp" />
         </RelativeLayout>
 
 

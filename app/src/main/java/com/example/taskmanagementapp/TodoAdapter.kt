@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.core.content.res.TypedArrayUtils.getText
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmanagementapp.database.TodoRepository
@@ -51,13 +52,52 @@ class TodoAdapter(todoTasks: List<Todo>, repositary: TodoRepository, viewModel: 
                     }
                 }
             }
-            builder.setNegativeButton(context?.getString(R.string.deleteAlert_cancel)) { dialog, _ ->
+            builder.setNegativeButton(context?.getString(R.string.Alert_cancel)) { dialog, _ ->
                 dialog.cancel()
             }
             val alertDialog = builder.create()
             alertDialog.show()
 
         }
+
+        holder.taskCard.setOnClickListener{
+            val builder = AlertDialog.Builder(context)
+            val inflater = LayoutInflater.from(context)
+            val dialogView = inflater.inflate(R.layout.custom_alert_dialog_update, null)
+
+            builder.setView(dialogView)
+
+            // Access the EditTexts in the custom layout
+            val updatedTitleEditText = dialogView.findViewById<EditText>(R.id.editTitle)
+            val updatedDescriptionEditText = dialogView.findViewById<EditText>(R.id.editDescription)
+
+            updatedTitleEditText.setText(task.title)
+            updatedDescriptionEditText.setText(task.description)
+            builder.setPositiveButton(context?.getString(R.string.updateAlert_update)) { _, _ ->
+                val updatedTitle = updatedTitleEditText.text.toString()
+                val updatedDescription = updatedDescriptionEditText.text.toString()
+
+                CoroutineScope(Dispatchers.IO).launch {
+
+                    val taskId = task.id ?: -1 // Default value if id is null
+                    repositary.update(updatedTitle, updatedDescription, taskId)
+                    //refreshing data set after updating a task
+                    todoTasks = repositary.getAllTodoItems()
+
+                    withContext(Dispatchers.Main) {
+                        viewModel.setData(todoTasks)
+                    }
+                }
+            }
+            builder.setNegativeButton(context?.getString(R.string.Alert_cancel)) { dialog, _ ->
+                dialog.cancel()
+            }
+            val alertDialog = builder.create()
+            alertDialog.show()
+
+        }
+
     }
+
 
 }

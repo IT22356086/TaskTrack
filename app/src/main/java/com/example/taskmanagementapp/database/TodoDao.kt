@@ -17,11 +17,9 @@ interface TodoDao {
     @Query("SELECT * FROM todo")
     fun getAllTodoItems():List<Todo>
 
-    @Query("SELECT * FROM todo WHERE id =:id")
-    fun getOne(id:Int): Todo
+    @Query("SELECT * FROM todo WHERE id = :id")
+    suspend fun getTodoItemById(id: Int): Todo
 
     @Query("UPDATE Todo SET title = :title, description = :description WHERE id = :id")
     suspend fun update(title: String, description: String, id: Int)
-
-    @Query()
 }
