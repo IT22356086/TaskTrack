@@ -1,16 +1,16 @@
-## TaskMaster
-TaskMaster is a task management developed using kotlin. It provides users with the basic features like create, update, delete, task efficiently using multi threading concept
+## TaskTrack
+
+TaskTrack is a task management application developed in Kotlin. It provides essential features to efficiently manage tasks such as creating, updating, deleting, and reading tasks. The application leverages multithreading to ensure smooth and efficient performance during task management.
 
 ## Features
-- Create Task
-- Update Task
-- Delete Task
-- Read Task
-- Kotlin Coroutines for smooth and better user experiance when performing database operations
 
-## Technologies
-- Kotlin
-- Room Persistence Library
-- Java
-- Gradle
- 
+- **Create Task**: Add new tasks with ease.
+- **Update Task**: Modify existing tasks quickly.
+- **Delete Task**: Remove tasks when no longer needed.
+- **Read Task**: View and manage your tasks effectively.
+- **Smooth User Experience**: Utilizes Kotlin Coroutines for a seamless user experience when performing database operations.
+
+## Technologies Used
+
+- **Kotlin**: The primary language for development.
+- **Room Persistence Library**: For efficient data management and storage.
